@@ -18,6 +18,10 @@ public class PlayerHealth_My : MonoBehaviour
     [SerializeField] AudioSource audioSource;
 
     //TO DO UI
+    [Header("UI")]
+    [SerializeField] Slider PlayerHealthUI;
+    [SerializeField] Image DamageImage;
+    [SerializeField] Text DamageImageText;
 
     [Header("Debugging Properties")]
     [SerializeField] bool isInvulnerable = false;
@@ -52,9 +56,12 @@ public class PlayerHealth_My : MonoBehaviour
         {
             //扣除玩家的血量
             currentHealth -= amount;
-            Debug.Log("玩家血量：" + currentHealth);
+            //TO DO 更新玩家血量UI
+            PlayerHealthUI.value = currentHealth;
+            DamageImage.GetComponent<FlashFadeImage_My>().Flash();
+            DamageImageText.GetComponent<FlashFadeText_My>().Flash();
         }
-        //TO DO 显示UI
+        
 
         if(!IsAlive())
         {

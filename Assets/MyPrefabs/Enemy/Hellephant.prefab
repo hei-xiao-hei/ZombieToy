@@ -151,12 +151,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160534494511278212}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.5212361
-  m_Height: 3.084565
+  m_Radius: 1.083785
+  m_Height: 2.1769795
   m_Direction: 1
-  m_Center: {x: -0.10211301, y: 1.5139815, z: 0.18169248}
+  m_Center: {x: -0.10211301, y: 1.0601888, z: 0.017062187}
 --- !u!135 &1160534494511312425
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -168,8 +168,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.0639199
-  m_Center: {x: 0, y: 1.0700017, z: 0}
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!82 &1160534494511312424
 AudioSource:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlimeDebuff: {fileID: 0}
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1
   attackDamage: 10
   animator: {fileID: 1160534494504016704}
 --- !u!114 &1160534494511312428

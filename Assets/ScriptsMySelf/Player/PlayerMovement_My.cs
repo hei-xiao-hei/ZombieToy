@@ -14,7 +14,6 @@ public class PlayerMovement_My : MonoBehaviour
     [SerializeField] Rigidbody rigidBody;//刚体
 
     public bool canMove = false;//是否是可移动状态
-    // Start is called before the first frame update
 
     //安全代码
     void Reset()

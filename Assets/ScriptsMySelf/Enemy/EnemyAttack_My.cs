@@ -24,7 +24,6 @@ public class EnemyAttack_My : MonoBehaviour
     {
         attackDelay = new WaitForSeconds(timeBetweenAttacks);
     }
-
     //脚本激活时，调用
     private void OnEnable()
     {
@@ -38,7 +37,6 @@ public class EnemyAttack_My : MonoBehaviour
     //开始触发后调用该方法
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("敌人触碰到：" + other.gameObject.name);
         //如果与敌人发生触发检测的是玩家
         if(other.transform==GameManager_My.Instance.Player.transform)
         {
@@ -60,9 +58,7 @@ public class EnemyAttack_My : MonoBehaviour
 
     IEnumerator AttackPlayer()
     {
-        Debug.Log("qian");
         yield return null;
-        Debug.Log("hou");
 
         if(GameManager_My.Instance==null)
         {
@@ -74,8 +70,8 @@ public class EnemyAttack_My : MonoBehaviour
             //如果玩家在范围内且SlimeDebuff为空
             if(playerInRange&&SlimeDebuff==null)
             {
-                //玩家收到伤害
-                GameManager.Instance.Player.TakeDamage(attackDamage);
+                //玩家受到伤害
+                GameManager_My.Instance.Player.TakeDamage(attackDamage);
             }
             yield return attackDelay;
         }
@@ -90,6 +86,8 @@ public class EnemyAttack_My : MonoBehaviour
         //否则，玩家死亡
         animator.SetTrigger("PlayerDead");//播放玩家死亡动画
 
+        //显示游戏结束UI
+        GameManager_My.Instance.PlayerDied();
         //调用死亡函数
         Defeated();
 

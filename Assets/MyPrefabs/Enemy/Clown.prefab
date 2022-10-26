@@ -195,10 +195,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2
-  m_Height: 2
+  m_Radius: 0.50481075
+  m_Height: 1.7651025
   m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: -0.02539426, y: 0.8286434, z: 0}
 --- !u!135 &5008891760731729888
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -210,8 +210,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.86760044
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Radius: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &5008891760731729695
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlimeDebuff: {fileID: 0}
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1
   attackDamage: 10
   animator: {fileID: 5008891760724367990}
 --- !u!114 &5008891760731729691
