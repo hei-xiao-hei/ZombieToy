@@ -14,7 +14,10 @@ public class PlayerSelect_My : MonoBehaviour
     [SerializeField] Rigidbody rigidBody;//刚体
     [SerializeField] Animator animator;//动画
     [SerializeField] PlayerHealth_My playerHealth;//玩家生命值脚本
-    //To DO角色生命值和碰撞体
+
+    //建立一个敌人物体的数组，用于逐个开启生成的协程
+    public GameObject[] EnemyObject;
+    private int EnemyNum;//生成敌人的预制体的数量
 
 
     //安全代码，保证变量都赋值了
@@ -25,6 +28,7 @@ public class PlayerSelect_My : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
         PlayerAttack = GetComponent<PlayerAttack_My>();
+        
     }
 
     //鼠标抬起选择角色
@@ -37,7 +41,13 @@ public class PlayerSelect_My : MonoBehaviour
             return;
         }
 #endif
-        
+        EnemyNum = EnemyObject.Length;
+        for(int i=0;i<EnemyNum;i++)
+        {
+            EnemyObject[i].gameObject.GetComponent<EnemySpawner_My>().canSpawn = true;
+            EnemyObject[i].gameObject.GetComponent<EnemySpawner_My>().StarIEnumerator();
+        }
+
         //调用GameManager中的PlayChosen方法
         GameManager_My.Instance.PlayerChosen(playerHealth);
 

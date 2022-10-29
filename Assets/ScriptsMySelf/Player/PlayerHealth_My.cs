@@ -7,7 +7,8 @@ public class PlayerHealth_My : MonoBehaviour
 {
     [Header("Health Properties")]
     [SerializeField] int maxHealth = 100;//定义玩家生命值
-    [SerializeField] AudioClip deathClip = null;//音乐
+    [SerializeField] AudioClip deathClip = null;//玩家死亡音乐
+    [SerializeField] AudioClip hurtClip = null;//玩家受伤音乐
 
     [Header("Script References")]
     [SerializeField] PlayerMovement_My playerMovement;
@@ -56,7 +57,13 @@ public class PlayerHealth_My : MonoBehaviour
         {
             //扣除玩家的血量
             currentHealth -= amount;
-            //TO DO 更新玩家血量UI
+            //播放玩家受伤音乐
+            if(audioSource!=null)
+            {
+                audioSource.clip = hurtClip;
+                audioSource.Play();
+            }
+            //更新玩家血量UI
             PlayerHealthUI.value = currentHealth;
             DamageImage.GetComponent<FlashFadeImage_My>().Flash();
             DamageImageText.GetComponent<FlashFadeText_My>().Flash();
@@ -78,6 +85,7 @@ public class PlayerHealth_My : MonoBehaviour
             {
                 //播放死亡音效
                 audioSource.clip = deathClip;
+                audioSource.Play();
             }
 
             //TO DO调用死亡代码

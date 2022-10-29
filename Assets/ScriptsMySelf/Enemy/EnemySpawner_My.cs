@@ -10,13 +10,16 @@ public class EnemySpawner_My : MonoBehaviour
     [SerializeField] int maxEnemies = 10;//敌人数量的最大值
 
     [Header("Debugging Properties")]
-    [SerializeField] bool canSpawn = true;//可以生成
+    [SerializeField] public bool canSpawn = false;//可以生成
 
     EnemyHealth_My[] enemies;//所有敌人
     WaitForSeconds spawnDelay;
 
     private void Awake()
     {
+
+       // Instance = this;//单例模式赋值
+
         enemies = new EnemyHealth_My[maxEnemies];
 
         //将初始化生成maxEnemies个敌人放入数组中，但敌人先不显示
@@ -35,7 +38,14 @@ public class EnemySpawner_My : MonoBehaviour
         spawnDelay = new WaitForSeconds(spawnRate);
     }
 
-    IEnumerator Start()
+    //当选择角色之后开启生成敌人的协程
+    public void StarIEnumerator()
+    {
+        StartCoroutine("GenerateEnemy");
+    }
+
+    //在Update之前使用协程Start,每次生成的
+    IEnumerator GenerateEnemy()
     {
         //如果能生成敌人
         while(canSpawn)

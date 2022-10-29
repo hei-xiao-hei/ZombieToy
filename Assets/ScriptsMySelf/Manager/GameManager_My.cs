@@ -16,8 +16,10 @@ public class GameManager_My : MonoBehaviour
     //控制UI
     [Header("UI Properties")]
     [SerializeField] Text infoText;//标题文本
-    [SerializeField] Text gameoverText;//游戏结束文本
-
+    [SerializeField] Image gameoverImage;//游戏结束UI
+    [SerializeField] Button PauseBtn;//暂停按钮
+    [SerializeField] Canvas PauseCan;//暂停画布
+    [SerializeField] Button ExitButton;//退出按钮
 
     //播放器的选择属性
     [Header("Player Selection Properties")]
@@ -37,7 +39,7 @@ public class GameManager_My : MonoBehaviour
     private void Start()
     {
         //场景改变时不销毁此对象
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
         PlayerMovement_My.Instance.Defeated();//开始时canMove设置为false角色不可移动
         
     }
@@ -51,7 +53,7 @@ public class GameManager_My : MonoBehaviour
         }
         else if(Instance!=this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
@@ -92,9 +94,9 @@ public class GameManager_My : MonoBehaviour
 
         //显示游戏结束UI
 
-        if(gameoverText!=null)
+        if(gameoverImage!=null)
         {
-            gameoverText.enabled = true;
+            gameoverImage.gameObject.SetActive(true);//显示游戏结束界面
         }
     }
 
@@ -111,19 +113,29 @@ public class GameManager_My : MonoBehaviour
         {
             infoText.text = "Score:" + score;
         }
-        //设置Ally
-        if(allyManager!=null)
-        {
-           //
-           
-        }
     }
 
 
     //重新加载场景
     void  ReloadScene()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.buildIndex);
+        //Scene currentScene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(currentScene.buildIndex);
+        SceneManager.LoadScene("MySelfScene");
+    }
+
+    //按下暂停按钮触发事件
+    public void Pausebtn()
+    {
+        PauseCan.gameObject.SetActive(true);
+
+        Time.timeScale = 0;
+        
+    }
+
+    //退出游戏
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

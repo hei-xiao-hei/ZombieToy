@@ -41,7 +41,7 @@ public class EnemyMovement_My : MonoBehaviour
         {
             yield break;
         }
-        //如果导航网格激活的话，进入循环
+        //如果导航网格激活的话,进入循环
         while(navMeshAgent.enabled)
         {
             Transform target = GameManager_My.Instance.EnemyTarget;//更新敌人的目标

@@ -28,35 +28,9 @@ public class PlayerInputPC_My : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //暂停菜单的设置：如果有暂停菜单UI并且玩家按下取消按钮，则暂停游戏
-       /* if(pauseMenu!=null&Input.GetButtonDown("Cancel"))
-        {
-            pauseMenu.Pause();
-        }*/
-        if(!CanUpdate())
-        {
-            return;
-        }
         HandleMoveInput();
         HandleAttackInput();
         HandleAllyInput();
-    }
-    
-    //判断游戏是否暂停的函数
-    bool CanUpdate()
-    {
-        /*//如果暂停UI不为空，且在暂停状态，则返回false
-        if(pauseMenu!=null&&pauseMenu.IsPaused)
-        {
-            return false;
-        }*/
-
-        /*if(GameManager.Instance.Player==null||GameManager.Instance.transform!=transform)
-        {
-            return false;
-        }*/
-        
-        return true;
     }
     void HandleMoveInput()
     {
